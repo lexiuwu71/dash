@@ -1,5 +1,7 @@
 #!/bin/sh
 
+chmod +x $(find | grep .sh)
+
 # 0.0.0
 # version, minor, patch
 # devlopment, alpha, beta, release
@@ -72,13 +74,20 @@ cp -r files/skel/* /etc/skel
 # setup user
 STEP="User setup"
 echo "permit persist :wheel" > /etc/doas.conf
-if (whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to create a user account?" 10 70); then
+if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to create a user account?" 10 70; then
 	username=$(whiptail --inputbox "Choose a username:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
-	password=$(whiptail --inputbox "Choose a password:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
+	password=$(whiptail --passwordbox "Choose a password:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
 	adduser "$username"
-	if (whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like this user to be root? \(wheel group\)" 10 70); then
+	echo "$username:$password" | chpasswd
+
+	if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like this user to be root? (wheel group)" 10 70; then
 		addgroup $username wheel
 	fi
 else
-	
+	echo "ask if any user wants to be admin user"
+fi
+
+if whiptail --title "Hostname" --backtitle "$BACK_TITLE" --yesno "Would you like to choose a custom hostname?" 10 70; then
+	hostname=$(whiptail --inputbox "Choose a hostname:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
+	echo "$hostname" > /etc/hostname
 fi
