@@ -5,6 +5,8 @@ font-terminus
 newt
 util-linux
 pciutils
+doas
+
 ntfs-3g
 exfatprogs
 dosfstools
