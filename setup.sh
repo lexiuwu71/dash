@@ -42,10 +42,6 @@ echo "$(clear)" > /etc/motd
 cat files/welcome >> /etc/motd
 echo -e "Welcome to D.A.S.H\n\tDigital Access and Service Hub (C) 2023-$YEAR\n\nType 'help' for a list of commands\n\n" >> /etc/motd
 
-# set profile
-rm /etc/profile
-cp files/profile /etc/profile
-
 cpu=$(whiptail --title "CPU Microcode" --backtitle "$BACK_TITLE" \
 --radiolist "Choose CPU Microcode to install" 10 70 2 \
 "amd" "AMD CPU" OFF \
