@@ -103,3 +103,9 @@ if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to
 else
 	echo "Skipping user setup."
 fi
+
+STEP="Hostname"
+if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to set a custom hostname?" 10 70; then
+	hostname=$(whiptail --inputbox "Enter a hostname:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
+	echo "$HOSTNAME" > /etc/hostname
+fi
