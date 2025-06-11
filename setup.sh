@@ -74,26 +74,32 @@ cp -r files/skel/* /etc/skel
 # setup user
 STEP="User setup"
 echo "permit persist :wheel" > /etc/doas.conf
-if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to create a user account?" 10 70; then
-	username=$(whiptail --inputbox "Choose a username:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
-	password=$(whiptail --passwordbox "Choose a password:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
-	adduser "$username"
-	echo "$username:$password" | chpasswd
 
-	if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like this user to be root? (wheel group)" 10 70; then
-		addgroup $username wheel
+if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to set up a user account?" 10 70; then
+	username=$(whiptail --inputbox "Enter a username:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
+
+	if id "$username" >/dev/null 2>&1; then
+		echo "User '$username' already exists, applying settings..."
+	else
+		password=$(whiptail --passwordbox "Choose a password:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
+		adduser "$username"
+		echo "$username:$password" | chpasswd
 	fi
 
-	addgroup $username video
-	addgroup $username input
-	addgroup $username seat
-	addgroup $username tty
-	addgroup $username audio
-else
-	echo "ask if any user wants to be admin user"
-fi
+	# Copy skel if missing home files
+	if [ -d "/home/$username" ]; then
+		cp -rn /etc/skel/. /home/$username/
+		chown -R "$username:$username" "/home/$username"
+	fi
 
-if whiptail --title "Hostname" --backtitle "$BACK_TITLE" --yesno "Would you like to choose a custom hostname?" 10 70; then
-	hostname=$(whiptail --inputbox "Choose a hostname:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
-	echo "$hostname" > /etc/hostname
+	# Always ensure they're in the needed groups
+	addgroup "$username" wheel
+	addgroup "$username" video
+	addgroup "$username" input
+	addgroup "$username" seat
+	addgroup "$username" tty
+	addgroup "$username" audio
+
+else
+	echo "Skipping user setup."
 fi
