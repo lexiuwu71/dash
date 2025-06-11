@@ -69,7 +69,7 @@ apk fix
 # copy skel
 rm -rf /etc/skel
 mkdir -p /etc/skel
-cp -r files/skel/* /etc/skel
+rsync -a files/skel/. /etc/skel
 
 # setup user
 STEP="User setup"
@@ -89,9 +89,9 @@ if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to
 	# Copy skel if missing home files
 	if [ -d "/home/$username" ]; then
 		mkdir -p "/home/$username/tmp"
-		cp -r /etc/skel/. "/home/$username/tmp"
+		rsync -a /etc/skel/. "/home/$username/tmp"
 		chown -R "$username:$username" "/home/$username/tmp"
-		cp -r "/home/$username/tmp/." "/home/$username/"
+		rsync -a "/home/$username/tmp/." "/home/$username/"
 		rm -rf "/home/$username/tmp"
 	fi
 

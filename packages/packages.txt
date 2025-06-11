@@ -6,6 +6,7 @@ newt
 util-linux
 pciutils
 doas
+rsync
 
 ntfs-3g
 exfatprogs
