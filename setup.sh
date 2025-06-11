@@ -83,6 +83,12 @@ if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to
 	if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like this user to be root? (wheel group)" 10 70; then
 		addgroup $username wheel
 	fi
+
+	addgroup $username video
+	addgroup $username input
+	addgroup $username seat
+	addgroup $username tty
+	addgroup $username audio
 else
 	echo "ask if any user wants to be admin user"
 fi

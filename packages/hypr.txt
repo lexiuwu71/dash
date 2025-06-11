@@ -20,7 +20,7 @@ xwayland
 alacritty
 thunar
 
-wayland-utils 
+wayland-utils
 wayland-protocols
 
 wl-clipboard
