@@ -10,7 +10,7 @@ case $1 in
 	"sys")
 		apk add $(cat packages/packages.txt)
 		;;
-	"wm")
+	"jwm")
 		apk add $(cat packages/wm.txt)
 		unzip files/Ambiance-Darkness.zip -d /usr/share/themes/
 		setup-xorg-base
