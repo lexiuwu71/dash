@@ -55,10 +55,10 @@ apk add "$cpu-ucode"
 
 pkg_profiles=$(whiptail --title "Packages" --backtitle "$BACK_TITLE" \
 --checklist "Choose Profile (which packages to install)" 10 70 4 \
-"hypr" "Hyprland Desktop" ON \
+"xfce4" "The XFCE DE" ON \
+"desktop" "Desktop Applications" ON \
 "music" "Music Server (mpd)" ON \
 "silly" "Silly terminal tools" ON \
-"desktop" "Desktop Applications" ON \
 3>&1 1>&2 2>&3)
 for item in $pkg_profiles; do
 	./install_packages.sh $(echo "$item" |  tr -d '"')
@@ -88,8 +88,11 @@ if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to
 
 	# Copy skel if missing home files
 	if [ -d "/home/$username" ]; then
-		cp -rn /etc/skel/. /home/$username/
-		chown -R "$username:$username" "/home/$username"
+		mkdir -p /home/$username/tmp
+		cp -r /etc/skel/. /home/$username/tmp
+		chown -R "$username:$username" "/home/$username/tmp"
+		cp -r /home/$username/tmp/. /home/$username/
+		rm -rf /home/$username/tmp
 	fi
 
 	# Always ensure they're in the needed groups
@@ -107,5 +110,5 @@ fi
 STEP="Hostname"
 if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to set a custom hostname?" 10 70; then
 	hostname=$(whiptail --inputbox "Enter a hostname:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
-	echo "$HOSTNAME" > /etc/hostname
+	echo "$hostname" > /etc/hostname
 fi

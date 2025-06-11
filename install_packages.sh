@@ -10,13 +10,16 @@ case $1 in
 	"sys")
 		apk add $(cat packages/packages.txt)
 		;;
-	"hypr")
+	"xfce4")
 		apk add $(cat packages/hypr.txt)
+		setup-xorg-base
 		setup-devd udev
 		rc-update add seatd
 		rc-update add dbus
+		rc-update add elogind
 		rc-service seatd start
 		rc-service dbus start
+		rc-service elogind start
 		;;
 	"silly")
 		apk add $(cat packages/terminal_apps.txt)
