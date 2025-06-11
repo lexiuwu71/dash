@@ -55,10 +55,10 @@ apk add "$cpu-ucode"
 
 pkg_profiles=$(whiptail --title "Packages" --backtitle "$BACK_TITLE" \
 --checklist "Choose Profile (which packages to install)" 10 70 4 \
-"xfce4" "The XFCE DE" ON \
+"jwm" "Joe's Window Manager" ON \
 "desktop" "Desktop Applications" ON \
 "music" "Music Server (mpd)" ON \
-"silly" "Silly terminal tools" ON \
+"silly" "Silly terminal Tools" ON \
 3>&1 1>&2 2>&3)
 for item in $pkg_profiles; do
 	./install_packages.sh $(echo "$item" |  tr -d '"')
@@ -88,11 +88,11 @@ if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to
 
 	# Copy skel if missing home files
 	if [ -d "/home/$username" ]; then
-		mkdir -p /home/$username/tmp
-		cp -r /etc/skel/. /home/$username/tmp
+		mkdir -p "/home/$username/tmp"
+		cp -r /etc/skel/. "/home/$username/tmp"
 		chown -R "$username:$username" "/home/$username/tmp"
-		cp -r /home/$username/tmp/. /home/$username/
-		rm -rf /home/$username/tmp
+		cp -r "/home/$username/tmp/." "/home/$username/"
+		rm -rf "/home/$username/tmp"
 	fi
 
 	# Always ensure they're in the needed groups

@@ -10,8 +10,9 @@ case $1 in
 	"sys")
 		apk add $(cat packages/packages.txt)
 		;;
-	"xfce4")
-		apk add $(cat packages/hypr.txt)
+	"wm")
+		apk add $(cat packages/wm.txt)
+		unzip files/Ambiance-Darkness.zip -d /usr/share/themes/
 		setup-xorg-base
 		setup-devd udev
 		rc-update add seatd

@@ -15,6 +15,10 @@ hfsprogs
 e2fsprogs
 btrfs-progs
 
+zip
+unzip
+tar
+
 mandoc
 man-pages
 less

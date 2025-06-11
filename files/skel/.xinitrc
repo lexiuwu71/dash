@@ -4,4 +4,10 @@ pipewire-pulse &
 pipewire-jack &
 pipewire-alsa &
 
-exec startxfce4
+export XDG_CURRENT_DESKTOP=XFCE
+export XDG_SESSION_DESKTOP=XFCE
+
+/usr/libexec/polkit-gnome-authentication-agent-1 &
+
+conky &
+exec jwm
