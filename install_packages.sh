@@ -13,12 +13,10 @@ case $1 in
 	"hypr")
 		apk add $(cat packages/hypr.txt)
 		setup-devd udev
+		rc-update add seatd
 		rc-update add dbus
-		rc-update add elogind
-		rc-update add polkit
+		rc-service seatd start
 		rc-service dbus start
-		rc-service elogind start
-		rc-service polkit start
 		;;
 	"silly")
 		apk add $(cat packages/terminal_apps.txt)

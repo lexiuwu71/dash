@@ -2,8 +2,10 @@ mesa-dri-gallium
 mesa-va-gallium
 
 dbus
-elogind
-polkit-elogind
+seatd
+
+xdg-desktop-portal
+xdg-desktop-portal-hyprland
 
 papirus-icon-theme
 
@@ -17,3 +19,15 @@ xwayland
 
 alacritty
 thunar
+
+wayland-utils 
+wayland-protocols
+
+hyprpaper
+waypaper
+wl-clipboard
+dunst
+wofi
+
+libxkbcommon
+ttf-dejavu
