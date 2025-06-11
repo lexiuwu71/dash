@@ -75,7 +75,7 @@ cp -r files/skel/* /etc/skel
 STEP="User setup"
 echo "permit persist :wheel" > /etc/doas.conf
 
-if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to set up a user account?" 10 70; then
+if whiptail --title "$STEP" --backtitle "$BACK_TITLE" --yesno "Would you like to set up a user account? (or update your user config)" 10 70; then
 	username=$(whiptail --inputbox "Enter a username:" 10 70 --title "$STEP" --backtitle "$BACK_TITLE" 3>&1 1>&2 2>&3)
 
 	if id "$username" >/dev/null 2>&1; then
