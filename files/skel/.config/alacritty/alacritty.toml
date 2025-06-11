@@ -1,0 +1,33 @@
+[general]
+import = [
+	"~/.config/alacritty/catppuccin-mocha.toml"
+]
+live_config_reload = true
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+TERM = "xterm-256color"
+
+[window]
+padding = { x = 15, y = 15 }
+opacity = 0.75
+class = { instance = "alacritty", general = "alacritty" }
+dynamic_title = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+normal = { family = "scientifica", style = "Regular" }
+bold = { family = "scientifica", style = "Bold" }
+italic = { family = "scientifica", style = "Italic" }
+bold_italic = { family = "scientifica", style = "Bold Italic" }
+size = 16
+
+[cursor]
+style = { shape = "underline" , blinking = "On" }
+blink_interval = 750
+blink_timeout = 0
+unfocused_hollow = false
+thickness = 0.25

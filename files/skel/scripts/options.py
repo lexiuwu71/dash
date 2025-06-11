@@ -1,0 +1,1 @@
+ICON_PATH="/home/user/scripts/osd/"

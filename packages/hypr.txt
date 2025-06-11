@@ -17,6 +17,8 @@ hyprgraphics
 aquamarine
 xwayland
 
+gsettings-desktop-schemas
+
 alacritty
 thunar
 
@@ -26,6 +28,22 @@ wayland-protocols
 wl-clipboard
 dunst
 wofi
+grim
+slurp
+
+nwg-look
 
 libxkbcommon
 ttf-dejavu
+
+pipewire
+wireplumber
+pipewire-pulse
+pipewire-jack
+pipewire-alsa
+pavucontrol
+pamixer
+brightnessctl
+
+mpvpaper
+swww
