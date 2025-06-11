@@ -5,7 +5,7 @@ dbus
 seatd
 
 xdg-desktop-portal
-xdg-desktop-portal-hyprland
+xdg-desktop-portal-wlr
 
 papirus-icon-theme
 
@@ -23,8 +23,6 @@ thunar
 wayland-utils 
 wayland-protocols
 
-hyprpaper
-waypaper
 wl-clipboard
 dunst
 wofi
