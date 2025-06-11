@@ -9,13 +9,11 @@ seatd
 
 jwm
 conky
-urxvt
+xterm
 xinit
-xorg
 xrandr
 setxkbmap
 xf86-input-libinput
-lxappearance
 feh
 gtk+2.0
 gtk+3.0
@@ -41,5 +39,3 @@ webp-pixbuf-loader
 gvfs-mtp
 libmtp
 gvfs-afc
-udisks2
-udisks2-gtk
