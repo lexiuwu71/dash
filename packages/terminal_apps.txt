@@ -1,4 +1,3 @@
 fastfetch
-neovim
 cmatrix
 ranger
