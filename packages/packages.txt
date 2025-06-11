@@ -8,6 +8,9 @@ pciutils
 doas
 rsync
 
+htop
+btop
+
 ntfs-3g
 exfatprogs
 dosfstools
