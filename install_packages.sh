@@ -18,11 +18,9 @@ case $1 in
 		rc-update add seatd
 		rc-update add dbus
 		rc-update add elogind
-		rc-update add polkit
 		rc-service seatd start
 		rc-service dbus start
 		rc-service elogind start
-		rc-update polkit start
 		;;
 	"silly")
 		apk add $(cat packages/terminal_apps.txt)
