@@ -5,7 +5,7 @@ chmod +x $(find | grep .sh)
 # 0.0.0
 # version, minor, patch
 # devlopment, alpha, beta, release
-DASH_VERSION="v0.1d"
+DASH_VERSION="v0.1.1d"
 ALPINE_VERSION="v3.22"
 HOSTNAME="dash"
 YEAR="2025"
