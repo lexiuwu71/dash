@@ -1,8 +1,6 @@
 pipewire &
 wireplumber &
 pipewire-pulse &
-pipewire-jack &
-pipewire-alsa &
 
 export XDG_CURRENT_DESKTOP=JWM
 export XDG_SESSION_DESKTOP=JWM
